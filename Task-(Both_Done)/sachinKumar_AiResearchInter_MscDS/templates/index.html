@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LLaVA Text Processor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LLaVA Text Processor</h1>
+            <p class="subtitle">Powered by Ollama and LLaVA:7b</p>
+        </header>
+        
+        <main>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="text">Enter your text:</label>
+                    <textarea id="text" name="text" rows="6" required>{{ input_text }}</textarea>
+                </div>
+                <button type="submit" class="btn">Process Text</button>
+            </form>
+            
+            {% if summary %}
+            <div class="results">
+                <div class="result-block">
+                    <h2>Summary</h2>
+                    <p>{{ summary }}</p>
+                </div>
+                
+                <div class="result-block">
+                    <h2>Keywords</h2>
+                    <ul class="keywords">
+                        {% for keyword in keywords %}
+                        <li>{{ keyword }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 LLaVA Text Processor</p>
+        </footer>
+    </div>
+</body>
+</html>
